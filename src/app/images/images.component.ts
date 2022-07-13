@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Image, images } from '../images'
+import { Image, Images } from '../images'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import {
   faCameraRetro,
@@ -11,6 +11,7 @@ import {
 import { FavouritesService } from '../favourites.service'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { ImagesService } from '../images.service'
+// import { url } from 'inspector'
 
 @Component({
   selector: 'app-images',
@@ -18,8 +19,8 @@ import { ImagesService } from '../images.service'
   styleUrls: ['./images.component.scss'],
 })
 export class ImagesComponent implements OnInit {
+  images: Image[] = []
   loading = true
-  images = images
   fasHeart = fasHeart
   faHeart = faHeart
   faCameraRetro = faCameraRetro
@@ -29,7 +30,7 @@ export class ImagesComponent implements OnInit {
 
   constructor(
     private favouritesService: FavouritesService,
-    imagesService: ImagesService,
+    public imagesService: ImagesService,
   ) {}
 
   addToFavourites(image: Image) {
@@ -40,12 +41,13 @@ export class ImagesComponent implements OnInit {
     } else {
       this.favouritesService.addToFavourites(image)
       window.alert('Image added to your Favourites.')
+      // replace regular heart icon with solid heart icon
+      const heart = document.getElementById('regular-heart')
+      const newElement = document.createElement('fa-icon')
+      newElement.innerHTML = '[icon]="fasHeart"'
+      console.log(heart)
+      // heart.parentNode.replaceChild(newElement, heart);
     }
-    // replace regular heart icon with solid heart icon
-    // const heart = document.getElementById("regular-heart");
-    // const newElement = document.createElement('fa-icon');
-    // newElement.innerHTML = '[icon]="fasHeart"';
-    // heart.parentNode.replaceChild(newElement, heart);
   }
 
   reload() {
@@ -54,14 +56,14 @@ export class ImagesComponent implements OnInit {
     let index = 0
 
     while (newImages.length < 5) {
-      index = Math.floor(Math.random() * images.length)
-      if (images[index].used === false) {
-        images[index].used = true
-        newImages.push(images[index])
+      index = Math.floor(Math.random() * this.images.length)
+      if (this.images[index].used === false) {
+        this.images[index].used = true
+        newImages.push(this.images[index])
         // reset 'used' property to false
         // (as otherwise reload() would be limited to 4 reloads only until all images 'used' property were equal to 'true' and then would need to break out of the loop)
-      } else if (images.every((image) => image.used === true) === true) {
-        images.map((img) => {
+      } else if (this.images.every((image) => image.used === true) === true) {
+        this.images.map((img) => {
           img.used = false
         })
       }
@@ -71,6 +73,11 @@ export class ImagesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.imagesService.getImages().subscribe((data: any) => {
+      this.images = data
+      // console.log(this.images)
+    })
+
     // Set five random non-duplicate images
     let randomIndex = 0
     const randomImages = new Array()
