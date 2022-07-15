@@ -51,17 +51,20 @@ body {
 }
 
 // BUTTONS
-.btn-green {
-  color: white;
-  padding: 14px 24px;
+.btn-reload {
+  text-decoration: none;
+  background-color: white;
+  padding: 11px 19px;
+  font-family: 'Roboto';
+  color: #97403a;
   border-radius: 4px;
-  background: $green;
   font-size: 16px;
   border: none;
   transition: 0.2s ease;
+  border: 1px solid #97403a;
 
   &:hover {
-    background: $darker-green;
+    background: #97403a;
     color: white;
   }
 }
