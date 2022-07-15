@@ -5,6 +5,7 @@ import {
   faCameraRetro,
   faPlus,
   faHeart as fasHeart,
+  faDog,
   faVanShuttle,
   fas,
 } from '@fortawesome/free-solid-svg-icons'
@@ -23,6 +24,7 @@ export class ImagesComponent implements OnInit {
   loading = true
   fasHeart = fasHeart
   faHeart = faHeart
+  faDog = faDog
   faCameraRetro = faCameraRetro
   faPlus = faPlus
   faGithub = faGithub
