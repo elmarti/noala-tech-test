@@ -2,30 +2,17 @@ $green: #6ec64e;
 $off-white: #efeae4;
 
 .banner {
-  // height: 370px;
-  // display: flex;
-  // margin: 0px;
-  // background-color: $off-white;
-  // align-items: center;
   display: flex;
-  // margin-top: 35px;
   background-color: #efeae4;
   align-items: center;
   flex-direction: column-reverse;
 
   .banner-picture {
     height: 125px;
-    // width: min-content;
-    // background-color: $off-white;
-    // margin-left: 56px;
-    // object-fit: contain;
-    // align-self: baseline;
   }
 
   .banner-heading {
     margin-right: 20px;
-    //   margin: 0px 0px 0px 82px;
-    //   // text-shadow: -1px 1px 0px black
   }
 }
 
@@ -33,19 +20,12 @@ $off-white: #efeae4;
   display: flex;
   justify-content: flex-end;
   margin: 20px 20px 0px 0px;
-  //   justify-content: space-between;
-  //   align-items: flex-end;
-  //   width: 1320px;
-  //   margin-right: auto;
-  //   margin-left: auto;
-  //   margin-bottom: 38px;
 }
 
 .loading {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 1320px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 38px;
@@ -116,8 +96,9 @@ $off-white: #efeae4;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 75px;
   color: rgb(180, 180, 180);
+  padding: 0px 30px 0px 30px;
 
   .footer-links {
     display: flex;
@@ -131,7 +112,7 @@ $off-white: #efeae4;
     padding: 0px 10px;
 
     &:hover {
-      color: $green;
+      color: #97403a;
     }
   }
 }
@@ -140,7 +121,7 @@ $off-white: #efeae4;
   align-items: center;
 
   .icon-heart {
-    color: palevioletred;
+    color: #97403a;
     padding: 0px 5px;
   }
 }

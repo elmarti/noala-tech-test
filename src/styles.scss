@@ -36,7 +36,7 @@ h3 {
 
 h4 {
   font-family: 'Roboto', sans-serif;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 300;
   margin: 0px;
   padding-left: 40px;
@@ -70,13 +70,6 @@ body {
 }
 
 .btn-favourites {
-  // text-decoration: none;
-  // font-size: 16px;
-  // background-color: white;
-  // padding: 14px 24px;
-  // border-radius: 4px;
-  // font-family: 'Roboto';
-  // color: palevioletred;
   text-decoration: none;
   font-size: 16px;
   background-color: white;
@@ -121,7 +114,7 @@ body {
 
 //CONTAINERS / LAYOUT / CARDS
 .container-xl {
-  width: 1320px;
+  // width: 1320px;
   margin-right: auto;
   margin-left: auto;
 }
