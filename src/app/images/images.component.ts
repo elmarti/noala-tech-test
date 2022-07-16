@@ -21,6 +21,7 @@ import { ImagesService } from '../images.service'
 })
 export class ImagesComponent implements OnInit {
   images: Image[] = []
+  allImages: Image[] = []
   loading = true
   fasHeart = fasHeart
   faHeart = faHeart
@@ -37,18 +38,17 @@ export class ImagesComponent implements OnInit {
 
   addToFavourites(image: Image) {
     // Exclude adding duplicates to Favourites
-    const favs = this.favouritesService.getFavouriteImages()
-    if (favs.includes(image)) {
-      window.alert('This image has already been added to your Favourites')
-    } else {
-      this.favouritesService.addToFavourites(image)
+    const wasAdeded = this.favouritesService.addToFavourites(image)
+    if (wasAdeded) {
       window.alert('Image added to your Favourites.')
       // replace regular heart icon with solid heart icon
       const heart = document.getElementById('regular-heart')
       const newElement = document.createElement('fa-icon')
       newElement.innerHTML = '[icon]="fasHeart"'
-      console.log(heart)
+      //replacing
       // heart.parentNode.replaceChild(newElement, heart);
+    } else {
+      window.alert('This image has already been added to your Favourites')
     }
   }
 
@@ -83,7 +83,7 @@ export class ImagesComponent implements OnInit {
     // Set five random non-duplicate images
     let randomIndex = 0
     const randomImages = new Array()
-
+    //TODO: not looping? always same img 5
     while (randomImages.length < 5) {
       randomIndex = Math.floor(Math.random() * this.images.length)
       if (this.images[randomIndex].used === false) {

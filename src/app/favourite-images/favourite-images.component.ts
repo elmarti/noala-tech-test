@@ -22,6 +22,7 @@ export class FavouriteImagesComponent implements OnInit {
     private favouritesService: FavouritesService,
   ) {}
 
+  //TODO: why 2x add to favorites here and image.components.ts
   addToFavourites(image: Image) {
     // Exclude adding duplicates to Favourites
     const favourites = this.favouritesService.getFavouriteImages()

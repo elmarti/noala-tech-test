@@ -1,24 +1,34 @@
-import { Injectable } from '@angular/core';
-import { Image } from './images';
+import { getModuleFactory, Injectable } from '@angular/core'
+import { Image } from './images'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FavouritesService {
-  favouriteImages: Image[] = [];
-
-  constructor() { }
+  constructor() {}
 
   addToFavourites(image: Image) {
-    this.favouriteImages.push(image);
+    const storedDogs: Image[] = JSON.parse(localStorage.getItem('dogs') || '[]')
+    const isInFavorites =
+      storedDogs.find((dog) => {
+        return dog.id === image.id
+      }) != undefined
+
+    if (!isInFavorites) {
+      storedDogs.push(image)
+      localStorage.setItem('dogs', JSON.stringify(storedDogs))
+      console.log('added')
+      return true
+    } else {
+      return false
+    }
   }
 
   getFavouriteImages() {
-    return this.favouriteImages;
+    return JSON.parse(localStorage.getItem('dogs') || '[]')
   }
 
   clearFavourites() {
-    this.favouriteImages = [];
-    return this.favouriteImages;
+    localStorage.setItem('dogs', JSON.stringify('[]'))
   }
 }
