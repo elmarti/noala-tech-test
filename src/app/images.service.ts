@@ -7,13 +7,12 @@ import { Images } from './images'
   providedIn: 'root',
 })
 export class ImagesService {
-  private readonly API = 'https://dog.ceo/api/breeds/image/random/50'
+  private readonly API = 'https://dog.ceo/api/breeds/image/random/5'
   constructor(private http: HttpClient) {}
   getImages() {
     return this.http.get<Images>(this.API).pipe(
-      map((images, i) =>
-        images.message.map((imageUrl, i) => ({
-          id: i + 1,
+      map((images) =>
+        images.message.map((imageUrl) => ({
           url: imageUrl,
           used: false,
         })),

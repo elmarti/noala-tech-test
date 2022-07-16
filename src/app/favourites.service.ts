@@ -11,7 +11,7 @@ export class FavouritesService {
     const storedDogs: Image[] = JSON.parse(localStorage.getItem('dogs') || '[]')
     const isInFavorites =
       storedDogs.find((dog) => {
-        return dog.id === image.id
+        return dog.url === image.url
       }) != undefined
 
     if (!isInFavorites) {

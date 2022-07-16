@@ -42,7 +42,7 @@
       </div>
     </div>
     <div *ngFor="let image of images" class="img-card">
-      <a [routerLink]="['/images', image.id]" id="random-imgs">
+      <a [routerLink]="['/images', image.url]" id="random-imgs">
         <img [src]="image.url" />
       </a>
       <div class="img-card-fav">
